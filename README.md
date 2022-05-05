@@ -18,7 +18,7 @@
 * Git, GitLab, GitHub
 
 ### Instructions
-Fork this project from here:
+Fork this project
 <details>
 <summary>Example</summary>
 
