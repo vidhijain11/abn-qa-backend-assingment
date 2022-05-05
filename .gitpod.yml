@@ -1,0 +1,7 @@
+vscode:
+  extensions:
+    - alexkrechik.cucumberautocomplete
+    - codezombiech.gitignore
+    - redhat.java
+    - vscjava.vscode-java-debug
+    - vscjava.vscode-java-test
