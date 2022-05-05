@@ -20,7 +20,7 @@
 ### Instructions
 Fork this project from here, example: 
 
-![img.png](01_fork_project.png)
+![img.png](doc/img/01_fork_project.png)
 
 #### Working in Web IDE (preferable)
 
