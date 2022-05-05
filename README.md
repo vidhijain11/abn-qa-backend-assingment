@@ -18,9 +18,12 @@
 * Git, GitLab, GitHub
 
 ### Instructions
-Fork this project from here, example: 
+Fork this project from here:
+<details>
+<summary>Example</summary>
 
-![img.png](doc/img/01_fork_project.png)
+   ![img.png](doc/img/01_fork_project.png)
+</details>
 
 #### Working in Web IDE (preferable)
 
@@ -28,7 +31,8 @@ Fork this project from here, example:
 2. Sing-in with GitHub account
 3. Create and commit your solution into your forked repository
 4. Create documentation in the README.md under the `Documentation` section
-5. Enable Repository permissions (for git push) for GitPod when coding from Web IDE here: https://gitpod.io/integrations
+5. IMPORTANT: Enable Repository permissions (e.g. git push) for GitPod when coding from Web IDE here:
+   https://gitpod.io/integrations
    <details>
    <summary>Details here</summary>
 
