@@ -1,0 +1,34 @@
+{
+  "invalid_id" : [
+    46437437723433
+  ],
+
+  "create_issue_invalid_request" : [
+    {
+      "request" : {
+        "state": "opened"
+      },
+      "response" : {
+        "error": "title is missing"
+      }
+    },
+    {
+      "request" : {
+        "title" : "test issue",
+        "confidential": null
+      },
+      "response" : {
+        "error": "confidential is empty"
+      }
+    },
+    {
+      "request" : {
+        "title" : "test issue",
+        "issue_type" : "prodIncident"
+      },
+      "response" : {
+        "error": "issue_type does not have a valid value"
+      }
+    }
+  ]
+}

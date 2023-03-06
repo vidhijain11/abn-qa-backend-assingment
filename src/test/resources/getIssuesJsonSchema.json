@@ -1,0 +1,597 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/object1678117640.json",
+  "title": "Root",
+  "type": "array",
+  "default": [],
+  "items":{
+    "$id": "#root/items",
+    "title": "Items",
+    "type": "object",
+    "required": [
+      "id",
+      "iid",
+      "project_id",
+      "title",
+      "description",
+      "state",
+      "created_at",
+      "updated_at",
+      "closed_at",
+      "closed_by",
+      "labels",
+      "milestone",
+      "assignees",
+      "author",
+      "type",
+      "assignee",
+      "user_notes_count",
+      "merge_requests_count",
+      "upvotes",
+      "downvotes",
+      "due_date",
+      "confidential",
+      "discussion_locked",
+      "issue_type",
+      "web_url",
+      "time_stats",
+      "task_completion_status",
+      "weight",
+      "blocking_issues_count",
+      "has_tasks",
+      "task_status",
+      "_links",
+      "references",
+      "severity",
+      "moved_to_id",
+      "service_desk_reply_to",
+      "epic_iid",
+      "epic",
+      "iteration",
+      "health_status"
+    ],
+    "properties": {
+      "id": {
+        "$id": "#root/items/id",
+        "title": "Id",
+        "type": "integer",
+        "examples": [
+          124761989
+        ],
+        "default": 0
+      },
+      "iid": {
+        "$id": "#root/items/iid",
+        "title": "Iid",
+        "type": "integer",
+        "examples": [
+          90
+        ],
+        "default": 0
+      },
+      "project_id": {
+        "$id": "#root/items/project_id",
+        "title": "Project_id",
+        "type": "integer",
+        "examples": [
+          44040169
+        ],
+        "default": 0
+      },
+      "title": {
+        "$id": "#root/items/title",
+        "title": "Title",
+        "type": "string",
+        "default": "",
+        "examples": [
+          "Title field is mandatory to create issue"
+        ],
+        "pattern": "^.*$"
+      },
+      "description": {
+        "$id": "#root/items/description",
+        "title": "Description",
+        "type": "null",
+        "default": null
+      },
+      "state": {
+        "$id": "#root/items/state",
+        "title": "State",
+        "type": "string",
+        "default": "",
+        "examples": [
+          "opened"
+        ],
+        "pattern": "^.*$"
+      },
+      "created_at": {
+        "$id": "#root/items/created_at",
+        "title": "Created_at",
+        "type": "string",
+        "default": "",
+        "examples": [
+          "2023-03-05T21:34:08.224Z"
+        ],
+        "pattern": "^.*$"
+      },
+      "updated_at": {
+        "$id": "#root/items/updated_at",
+        "title": "Updated_at",
+        "type": "string",
+        "default": "",
+        "examples": [
+          "2023-03-05T21:34:08.224Z"
+        ],
+        "pattern": "^.*$"
+      },
+      "closed_at": {
+        "$id": "#root/items/closed_at",
+        "title": "Closed_at",
+        "type": "null",
+        "default": null
+      },
+      "closed_by": {
+        "$id": "#root/items/closed_by",
+        "title": "Closed_by",
+        "type": "null",
+        "default": null
+      },
+      "labels": {
+        "$id": "#root/items/labels",
+        "title": "Labels",
+        "type": "array",
+        "default": [],
+        "items":{
+          "$id": "#root/items/labels/items",
+          "title": "Items",
+          "type": "string",
+          "default": "",
+          "examples": [
+            "service"
+          ],
+          "pattern": "^.*$"
+        }
+      },
+      "milestone": {
+        "$id": "#root/items/milestone",
+        "title": "Milestone",
+        "type": "null",
+        "default": null
+      },
+      "assignees": {
+        "$id": "#root/items/assignees",
+        "title": "Assignees",
+        "type": "array",
+        "default": []
+      },
+      "author": {
+        "$id": "#root/items/author",
+        "title": "Author",
+        "type": "object",
+        "required": [
+          "id",
+          "username",
+          "name",
+          "state",
+          "avatar_url",
+          "web_url"
+        ],
+        "properties": {
+          "id": {
+            "$id": "#root/items/author/id",
+            "title": "Id",
+            "type": "integer",
+            "examples": [
+              8897444
+            ],
+            "default": 0
+          },
+          "username": {
+            "$id": "#root/items/author/username",
+            "title": "Username",
+            "type": "string",
+            "default": "",
+            "examples": [
+              "vidhijain11"
+            ],
+            "pattern": "^.*$"
+          },
+          "name": {
+            "$id": "#root/items/author/name",
+            "title": "Name",
+            "type": "string",
+            "default": "",
+            "examples": [
+              "vidhijain11"
+            ],
+            "pattern": "^.*$"
+          },
+          "state": {
+            "$id": "#root/items/author/state",
+            "title": "State",
+            "type": "string",
+            "default": "",
+            "examples": [
+              "active"
+            ],
+            "pattern": "^.*$"
+          },
+          "avatar_url": {
+            "$id": "#root/items/author/avatar_url",
+            "title": "Avatar_url",
+            "type": "string",
+            "default": "",
+            "examples": [
+              "https://secure.gravatar.com/avatar/9a2fe7f19a6dd8a518a58be90ac1c3bf?s=80&d=identicon"
+            ],
+            "pattern": "^.*$"
+          },
+          "web_url": {
+            "$id": "#root/items/author/web_url",
+            "title": "Web_url",
+            "type": "string",
+            "default": "",
+            "examples": [
+              "https://gitlab.com/vidhijain11"
+            ],
+            "pattern": "^.*$"
+          }
+        }
+      }
+    ,
+      "type": {
+        "$id": "#root/items/type",
+        "title": "Type",
+        "type": "string",
+        "default": "",
+        "examples": [
+          "ISSUE"
+        ],
+        "pattern": "^.*$"
+      },
+      "assignee": {
+        "$id": "#root/items/assignee",
+        "title": "Assignee",
+        "type": "null",
+        "default": null
+      },
+      "user_notes_count": {
+        "$id": "#root/items/user_notes_count",
+        "title": "User_notes_count",
+        "type": "integer",
+        "examples": [
+          0
+        ],
+        "default": 0
+      },
+      "merge_requests_count": {
+        "$id": "#root/items/merge_requests_count",
+        "title": "Merge_requests_count",
+        "type": "integer",
+        "examples": [
+          0
+        ],
+        "default": 0
+      },
+      "upvotes": {
+        "$id": "#root/items/upvotes",
+        "title": "Upvotes",
+        "type": "integer",
+        "examples": [
+          0
+        ],
+        "default": 0
+      },
+      "downvotes": {
+        "$id": "#root/items/downvotes",
+        "title": "Downvotes",
+        "type": "integer",
+        "examples": [
+          0
+        ],
+        "default": 0
+      },
+      "due_date": {
+        "$id": "#root/items/due_date",
+        "title": "Due_date",
+        "type": "null",
+        "default": null
+      },
+      "confidential": {
+        "$id": "#root/items/confidential",
+        "title": "Confidential",
+        "type": "boolean",
+        "examples": [
+          true
+        ],
+        "default": true
+      },
+      "discussion_locked": {
+        "$id": "#root/items/discussion_locked",
+        "title": "Discussion_locked",
+        "type": "null",
+        "default": null
+      },
+      "issue_type": {
+        "$id": "#root/items/issue_type",
+        "title": "Issue_type",
+        "type": "string",
+        "default": "",
+        "examples": [
+          "issue"
+        ],
+        "pattern": "^.*$"
+      },
+      "web_url": {
+        "$id": "#root/items/web_url",
+        "title": "Web_url",
+        "type": "string",
+        "default": "",
+        "examples": [
+          "https://gitlab.com/assignment_project2/abn-amro-assignment/-/issues/90"
+        ],
+        "pattern": "^.*$"
+      },
+      "time_stats": {
+        "$id": "#root/items/time_stats",
+        "title": "Time_stats",
+        "type": "object",
+        "required": [
+          "time_estimate",
+          "total_time_spent",
+          "human_time_estimate",
+          "human_total_time_spent"
+        ],
+        "properties": {
+          "time_estimate": {
+            "$id": "#root/items/time_stats/time_estimate",
+            "title": "Time_estimate",
+            "type": "integer",
+            "examples": [
+              0
+            ],
+            "default": 0
+          },
+          "total_time_spent": {
+            "$id": "#root/items/time_stats/total_time_spent",
+            "title": "Total_time_spent",
+            "type": "integer",
+            "examples": [
+              0
+            ],
+            "default": 0
+          },
+          "human_time_estimate": {
+            "$id": "#root/items/time_stats/human_time_estimate",
+            "title": "Human_time_estimate",
+            "type": "null",
+            "default": null
+          },
+          "human_total_time_spent": {
+            "$id": "#root/items/time_stats/human_total_time_spent",
+            "title": "Human_total_time_spent",
+            "type": "null",
+            "default": null
+          }
+        }
+      }
+    ,
+      "task_completion_status": {
+        "$id": "#root/items/task_completion_status",
+        "title": "Task_completion_status",
+        "type": "object",
+        "required": [
+          "count",
+          "completed_count"
+        ],
+        "properties": {
+          "count": {
+            "$id": "#root/items/task_completion_status/count",
+            "title": "Count",
+            "type": "integer",
+            "examples": [
+              0
+            ],
+            "default": 0
+          },
+          "completed_count": {
+            "$id": "#root/items/task_completion_status/completed_count",
+            "title": "Completed_count",
+            "type": "integer",
+            "examples": [
+              0
+            ],
+            "default": 0
+          }
+        }
+      }
+    ,
+      "weight": {
+        "$id": "#root/items/weight",
+        "title": "Weight",
+        "type": "null",
+        "default": null
+      },
+      "blocking_issues_count": {
+        "$id": "#root/items/blocking_issues_count",
+        "title": "Blocking_issues_count",
+        "type": "integer",
+        "examples": [
+          0
+        ],
+        "default": 0
+      },
+      "has_tasks": {
+        "$id": "#root/items/has_tasks",
+        "title": "Has_tasks",
+        "type": "boolean",
+        "examples": [
+          true
+        ],
+        "default": true
+      },
+      "task_status": {
+        "$id": "#root/items/task_status",
+        "title": "Task_status",
+        "type": "string",
+        "default": "",
+        "examples": [
+          ""
+        ],
+        "pattern": "^.*$"
+      },
+      "_links": {
+        "$id": "#root/items/_links",
+        "title": "_links",
+        "type": "object",
+        "required": [
+          "self",
+          "notes",
+          "award_emoji",
+          "project",
+          "closed_as_duplicate_of"
+        ],
+        "properties": {
+          "self": {
+            "$id": "#root/items/_links/self",
+            "title": "Self",
+            "type": "string",
+            "default": "",
+            "examples": [
+              "https://gitlab.com/api/v4/projects/44040169/issues/90"
+            ],
+            "pattern": "^.*$"
+          },
+          "notes": {
+            "$id": "#root/items/_links/notes",
+            "title": "Notes",
+            "type": "string",
+            "default": "",
+            "examples": [
+              "https://gitlab.com/api/v4/projects/44040169/issues/90/notes"
+            ],
+            "pattern": "^.*$"
+          },
+          "award_emoji": {
+            "$id": "#root/items/_links/award_emoji",
+            "title": "Award_emoji",
+            "type": "string",
+            "default": "",
+            "examples": [
+              "https://gitlab.com/api/v4/projects/44040169/issues/90/award_emoji"
+            ],
+            "pattern": "^.*$"
+          },
+          "project": {
+            "$id": "#root/items/_links/project",
+            "title": "Project",
+            "type": "string",
+            "default": "",
+            "examples": [
+              "https://gitlab.com/api/v4/projects/44040169"
+            ],
+            "pattern": "^.*$"
+          },
+          "closed_as_duplicate_of": {
+            "$id": "#root/items/_links/closed_as_duplicate_of",
+            "title": "Closed_as_duplicate_of",
+            "type": "null",
+            "default": null
+          }
+        }
+      }
+    ,
+      "references": {
+        "$id": "#root/items/references",
+        "title": "References",
+        "type": "object",
+        "required": [
+          "short",
+          "relative",
+          "full"
+        ],
+        "properties": {
+          "short": {
+            "$id": "#root/items/references/short",
+            "title": "Short",
+            "type": "string",
+            "default": "",
+            "examples": [
+              "#90"
+            ],
+            "pattern": "^.*$"
+          },
+          "relative": {
+            "$id": "#root/items/references/relative",
+            "title": "Relative",
+            "type": "string",
+            "default": "",
+            "examples": [
+              "#90"
+            ],
+            "pattern": "^.*$"
+          },
+          "full": {
+            "$id": "#root/items/references/full",
+            "title": "Full",
+            "type": "string",
+            "default": "",
+            "examples": [
+              "assignment_project2/abn-amro-assignment#90"
+            ],
+            "pattern": "^.*$"
+          }
+        }
+      }
+    ,
+      "severity": {
+        "$id": "#root/items/severity",
+        "title": "Severity",
+        "type": "string",
+        "default": "",
+        "examples": [
+          "UNKNOWN"
+        ],
+        "pattern": "^.*$"
+      },
+      "moved_to_id": {
+        "$id": "#root/items/moved_to_id",
+        "title": "Moved_to_id",
+        "type": "null",
+        "default": null
+      },
+      "service_desk_reply_to": {
+        "$id": "#root/items/service_desk_reply_to",
+        "title": "Service_desk_reply_to",
+        "type": "null",
+        "default": null
+      },
+      "epic_iid": {
+        "$id": "#root/items/epic_iid",
+        "title": "Epic_iid",
+        "type": "null",
+        "default": null
+      },
+      "epic": {
+        "$id": "#root/items/epic",
+        "title": "Epic",
+        "type": "null",
+        "default": null
+      },
+      "iteration": {
+        "$id": "#root/items/iteration",
+        "title": "Iteration",
+        "type": "null",
+        "default": null
+      },
+      "health_status": {
+        "$id": "#root/items/health_status",
+        "title": "Health_status",
+        "type": "null",
+        "default": null
+      }
+    }
+  }
+
+}

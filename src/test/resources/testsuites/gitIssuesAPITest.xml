@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite1" verbose="1" thread-count="10" parallel="methods" >
+
+    <test name="api tests">
+        <classes>
+            <class name="com.abnamro.assignment.specs.apitests.GetIssues"/>
+            <class name="com.abnamro.assignment.specs.apitests.CreateIssue"/>
+            <class name="com.abnamro.assignment.specs.apitests.EditIssue"/>
+            <class name="com.abnamro.assignment.specs.apitests.DeleteIssue"/>
+        </classes>
+    </test>
+</suite>
