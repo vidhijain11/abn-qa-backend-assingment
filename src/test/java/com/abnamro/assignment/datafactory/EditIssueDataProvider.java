@@ -14,12 +14,13 @@ public class EditIssueDataProvider {
     public static final String TITLE = "title";
     public static final String ISSUE_TYPE = "issue_type";
 
+    /** Prepare test data to test the edit issue request with a set of valid query parameters **/
     @DataProvider(name = "edit_issue_test_data")
     public static Iterator<Object> data_provider() {
 
         List<Object> listOfTestdata = new ArrayList<>();
 
-        //-----------------------
+        //----------query parameter=title-------------
         BaseRequestModel editTitleType = new BaseRequestModel();
         editTitleType.testName = "Test_title_issueType";
         editTitleType.params = new QueryParamModel[]{
@@ -27,7 +28,7 @@ public class EditIssueDataProvider {
         };
         listOfTestdata.add(editTitleType);
 
-        //-----------------------
+        //---------query parameter=issue_type and state event--------------
         BaseRequestModel editState = new BaseRequestModel();
         editState.testName = "Test_state_event";
         editState.params = new QueryParamModel[]{
@@ -36,7 +37,7 @@ public class EditIssueDataProvider {
         };
         listOfTestdata.add(editState);
 
-        //-------------------------
+        //---------add more test data----------------
 
         return listOfTestdata.iterator();
 

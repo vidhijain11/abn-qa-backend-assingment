@@ -3,7 +3,6 @@ package com.abnamro.assignment.specs.apitests;
 import com.abnamro.assignment.datafactory.CreateIssueDataProvider;
 import com.abnamro.assignment.datafactory.EditIssueDataProvider;
 import com.abnamro.assignment.helper.IssueApiHelper;
-import com.abnamro.assignment.helper.ValidationHelper;
 import com.abnamro.assignment.models.request.BaseRequestModel;
 import com.abnamro.assignment.models.request.QueryParamModel;
 import com.abnamro.assignment.models.response.IssueModel;
@@ -14,7 +13,6 @@ import org.testng.annotations.Test;
 public class EditIssue extends TestBase {
 
     IssueApiHelper apiHelper = new IssueApiHelper();
-    ValidationHelper valdHelper = new ValidationHelper();
 
     @Test (dataProvider = "edit_issue_test_data", dataProviderClass = EditIssueDataProvider.class, description = "[POSITIVE] Should be able to update issue.")
     public void edit_issue(BaseRequestModel testData) {

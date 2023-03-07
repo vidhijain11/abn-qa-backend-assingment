@@ -1,6 +1,6 @@
 package com.abnamro.assignment.helper;
 
-import com.abnamro.assignment.constants.Endpoints;
+import com.abnamro.assignment.constants.Endpoint;
 import com.abnamro.assignment.models.request.QueryParamModel;
 import com.abnamro.assignment.utils.HttpUtil;
 import io.restassured.response.Response;
@@ -12,12 +12,7 @@ public class IssueApiHelper {
 
     HttpUtil util = new HttpUtil();
 
-    /**
-     * Create issue and get issue iid
-     * @param projectId
-     * @param reqPayloadCreateIssue
-     * @return
-     */
+    /** Create issue and get issue iid **/
     public String create_issue_and_get_issueIId(String projectId, JSONObject reqPayloadCreateIssue) {
         Response response = create_issue(projectId, reqPayloadCreateIssue);
         response.then().statusCode(201);
@@ -25,28 +20,36 @@ public class IssueApiHelper {
         return response.jsonPath().getString("iid");
     }
 
-    /**
-     * Create issue
-     * @param projectId
-     * @param reqPayloadCreateIssue
-     * @return
-     */
+    /** Send create issue request with default valid header. This function returns Response object **/
     public Response create_issue(String projectId, Object reqPayloadCreateIssue) {
-        return util.postRequest(Endpoints.create_issue(projectId), reqPayloadCreateIssue);
+        return util.postRequest(Endpoint.create_issue(projectId), HttpUtil.getValidHeader(), reqPayloadCreateIssue);
     }
+    /** Send get issues request with default valid header. This function returns Response object **/
+    public Response get_issues(String requestPath) {
+        return util.getRequest(requestPath, HttpUtil.getValidHeader());
+    }
+    /** Send delete issue request with default valid header. This function returns Response object **/
+    public Response delete_issue(String projectId, String issueIid) {
+        return util.deleteRequest(Endpoint.delete_issue(projectId, issueIid), HttpUtil.getValidHeader());
+    }
+    /** Send edit issue request with default valid header. This function returns Response object **/
+    public Response edit_issue(String requestPath) {
+        return util.putRequest(requestPath, HttpUtil.getValidHeader());
+    }
+
 
     /**
      * Delete all the issues present under a project
      * @param projectId
      */
     public void delete_all_issues(String projectId) {
-        Response response = util.getRequest(Endpoints.get_issues());
+        Response response = get_issues(Endpoint.get_issues());
         response.then().statusCode(200);
         List<Integer> iids;
         iids = response.jsonPath().get("iid");
         for ( Integer id: iids
              ) {
-            util.deleteRequest(Endpoints.delete_issue(projectId, String.valueOf(id)));
+            delete_issue(projectId, String.valueOf(id));
         }
     }
 
@@ -70,6 +73,6 @@ public class IssueApiHelper {
         String uri = "?"+queryParams;
         System.out.println("Request URI: "+uri);
 
-        return new HttpUtil().putRequest(Endpoints.edit_issue(projectId, issueIid) + uri);
+        return edit_issue(Endpoint.edit_issue(projectId, issueIid) + uri);
     }
 }

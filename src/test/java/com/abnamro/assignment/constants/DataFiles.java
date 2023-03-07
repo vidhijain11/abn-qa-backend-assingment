@@ -6,7 +6,7 @@ import org.json.JSONObject;
 import java.io.File;
 
 public class DataFiles {
-    static final public String file_config_staging = "./src/test/resources/configfiles/configProperties.properties";
+    static final public String file_config = "./src/test/resources/configfiles/config.properties";
     static final public String file_api_test_data = "./src/test/resources/testdata/apiTestData.json";
 
     public static JSONObject get_api_test_data() throws JSONException {

@@ -2,6 +2,7 @@ package com.abnamro.assignment.specs;
 
 import com.abnamro.assignment.helper.IssueApiHelper;
 import com.abnamro.assignment.helper.ValidationHelper;
+import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import com.abnamro.assignment.constants.DataFiles;
 import com.abnamro.assignment.helper.TestReportHelper;
@@ -14,45 +15,44 @@ import org.testng.ITestResult;
 import java.lang.reflect.Method;
 public class TestBase {
 
-    private Properties p;
+    private Properties prop;
     public ValidationHelper resMsg = new ValidationHelper();
     public Response responseSpec;
     public static String projectId;
     public static String baseUri;
     public static String accessToken;
-    private ThreadLocal<String> testName = new ThreadLocal<>();
 
-    public TestBase() {
+    @BeforeSuite
+    public void initialize(){
 
-        String  environment = "staging";
-        p = new Properties();
+        prop = new Properties();
+        String environment = System.getenv("ENVIRONMENT") != null ? System.getenv("ENVIRONMENT") : "staging";
 
-        if (System.getenv("ENVIRONMENT") != null) environment = System.getenv("ENVIRONMENT");
         switch (environment){
             case "staging":
                 try {
-                    p.load(new FileReader(DataFiles.file_config_staging));
+                    prop.load(new FileReader(DataFiles.file_config));
                 } catch (IOException e) {
                     TestReportHelper.logError(e.getLocalizedMessage());
                 }
                 break;
+            //add local, qa environment
             default:
                 System.out.println("Please provide environment name : valid values are - staging ");
         }
 
-        projectId =getProperty("PROJECT_ID");
         baseUri = getProperty("BASE_URI");
-        accessToken = getProperty("PRIVATE-TOKEN");
-    }
+        projectId = System.getenv("PROJECT_ID") != null ? System.getenv("PROJECT_ID") : getProperty("PROJECT_ID");
+        accessToken = System.getenv("ACCESS_TOKEN") != null ? System.getenv("ACCESS_TOKEN") : getProperty("ACCESS_TOKEN");
 
-    public String getProperty(String propertyName){
-        return p.getProperty(propertyName);
+        RestAssured.baseURI = baseUri;
+        RestAssured.urlEncodingEnabled = true;
     }
 
     @BeforeTest
     public void setUpData() {
-        IssueApiHelper commonfunc = new IssueApiHelper();
-        commonfunc.delete_all_issues(projectId);
+        IssueApiHelper apiHelper = new IssueApiHelper();
+        apiHelper.delete_all_issues(projectId);
     }
 
     @BeforeMethod
@@ -75,8 +75,8 @@ public class TestBase {
         }
 
         TestReportHelper.logInfo("Class name --> " + iTestResult.getTestClass().getRealClass().getName() + ", Method name --> "+ iTestResult.getMethod().getMethodName());  //log class name, method name in report
-
-        Object[] Object_Array= iTestResult.getParameters(); //log test parameters in report
+        //log test parameters in report
+        Object[] Object_Array= iTestResult.getParameters();
         String[] String_Array=new String[Object_Array.length];
 
         for (int i=0;i<String_Array.length;i++)
@@ -89,6 +89,10 @@ public class TestBase {
         //To log the testcase result in Extent Report
         TestReportHelper.getReporter().endTest(TestReportHelper.getTest());
         TestReportHelper.getReporter().flush();
+    }
+
+    public String getProperty(String propertyName){
+        return prop.getProperty(propertyName);
     }
 
 }

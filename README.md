@@ -44,5 +44,44 @@ Fork this project
    </details>
 
 ## Documentation
-_<< Your documentation comes here >>_
-1. Test
+This repository contains TEST-SUITE for Sample Project.
+This test framework is designed using Rest Assured java library with TestNG framework. It is written in java language.
+
+### Based on
+
+This suite is currently based on:
+- **java 11**
+- **io.rest-assured:** `5.3.0` https://rest-assured.io/
+- **com.relevantcodes** `2.41.2` https://www.extentreports.com/docs/versions/2/java/doc/
+- **org.testng** `6.13.1` https://testng.org/doc/
+- **maven-surefire-plugin**
+
+### How to setup run test suite
+
+1. Clone git repository
+2. Navigate to the cloned folder
+3. Open the folder in any code editor
+4. Open the terminal and hit following commands in terminal
+
+To set environment variables
+```
+export ACCESS_TOKEN=<private git access token>
+```
+```
+export PROJECT_ID=<project id>
+```
+```
+mvn clean test 
+```
+
+To run all the tests [This will by default run all specs in parallel mode]
+
+At the root level ‘TestReport.html’ file will be generated.
+Open the html file in any browser.
+
+You can set the BASE_URI, ACCESS_TOKEN and PROJECT_ID in `src/test/resources/configfiles/config.properties` file.
+by default BASE_URI = https://gitlab.com/api/v4
+
+Note : 
+   1) If environment variable is not provided it will fetch BASE_URI, ACCESS_TOKEN and PROJECT_ID from `config.properties` file.
+   2) Only authenticated user has access to api's. It returns only issues created by the current user.

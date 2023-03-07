@@ -15,37 +15,42 @@ import java.util.Map;
 
 public class CreateIssueDataProvider {
 
+    /** Prepare test data to test the create issue request with a set of valid test data **/
     @DataProvider(name = "create_issue_test_data")
     public static Iterator<Object> data_provider() {
 
         List<Object> listOfTestdata = new ArrayList<>();
 
-        //-----------------------
-        CreateIssueModel onlyTitle = new CreateIssueModel();
-        onlyTitle.testName = "Create_issue_with_mandatory_attribute_title";
-        onlyTitle.payload = default_create_issue_payload();
+        //------test data 1-----------------
+        CreateIssueModel titleDesc = new CreateIssueModel();
+        titleDesc.testName = "Create_issue_with_title_and_description";
+        titleDesc.payload = default_create_issue_payload();
+        titleDesc.payload.put("description", "This is test issue");
 
-        listOfTestdata.add(onlyTitle);
+        listOfTestdata.add(titleDesc);
 
-        //-----------------------
+        //-------test data 2----------------
         CreateIssueModel withLabel = new CreateIssueModel();
         withLabel.testName = "Create_confidential_issue_with_service_label";
         withLabel.payload = default_create_issue_payload();
+        withLabel.payload.put("description", "❤️\uD83D\uDE0A some emojis !@#$%^&*()_-+=[]{}:;'\",<.>/?`~ with all special characters");
         withLabel.payload.put("labels", List.of("service"));
         withLabel.payload.put("confidential", true);
         listOfTestdata.add(withLabel);
 
-        //-------------------------
+        //-------add more test data------------------
 
         return listOfTestdata.iterator();
     }
 
-    @DataProvider(name = "create_issue_invalid_request")
-    public Object[] create_issue_invalid_request() throws JSONException {
+    /** To test the create issue request with set of invalid data. This method fetches data from apiTestData.json file **/
+    @DataProvider(name = "create_issue_with_invalid_request_payload")
+    public Object[] create_issue_with_invalid_request_payload() throws JSONException {
         JSONArray data = DataFiles.get_api_test_data().getJSONArray("create_issue_invalid_request");
         return new HttpUtil().toObjectArray(data);
     }
 
+    /** returns json object to create issue with title **/
     public static JSONObject default_create_issue_payload() {
 
       JSONObject payload = new JSONObject();
@@ -53,6 +58,7 @@ public class CreateIssueDataProvider {
       return payload;
     }
 
+    /** returns json object to create issue with additional request parameters **/
     public static JSONObject get_create_issue_payload(Map<String, Object> reqParams) {
         JSONObject reqPayloadCreateIssue = default_create_issue_payload();
         reqParams.forEach(reqPayloadCreateIssue::put);
