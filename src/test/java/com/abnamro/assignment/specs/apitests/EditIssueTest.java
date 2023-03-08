@@ -10,7 +10,7 @@ import com.abnamro.assignment.specs.TestBase;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class EditIssue extends TestBase {
+public class EditIssueTest extends TestBase {
 
     IssueApiHelper apiHelper = new IssueApiHelper();
 

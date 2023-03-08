@@ -9,7 +9,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import com.abnamro.assignment.specs.TestBase;
 
-public class DeleteIssue extends TestBase {
+public class DeleteIssueTest extends TestBase {
 
     IssueApiHelper apiHelper = new IssueApiHelper();
     String preReqIssueIId;
@@ -33,15 +33,15 @@ public class DeleteIssue extends TestBase {
         Assert.assertFalse(responseSpec.jsonPath().getList("iid").contains(iid));
     }
 
-    @Test(dataProvider = "invalid_id", dataProviderClass = CommonDataProvider.class, description = "[NEGATIVE] Should return 404 error code when user deletes issue by invalid projectId")
-    public void delete_issue_by_invalid_projectId(Object testId) {
-        responseSpec = apiHelper.delete_issue(testId.toString(), preReqIssueIId);
+    @Test(dataProvider = "invalid_projectId", dataProviderClass = CommonDataProvider.class, description = "[NEGATIVE] Should return 404 error code when user deletes issue by invalid projectId")
+    public void delete_issue_by_invalid_projectId(Object testProjectId) {
+        responseSpec = apiHelper.delete_issue(String.valueOf(testProjectId), preReqIssueIId);
         resMsg.validate_projectId_not_found(responseSpec);
     }
 
-    @Test(dataProvider = "invalid_id", dataProviderClass = CommonDataProvider.class, description = "[NEGATIVE] Should return 404 error code when user deletes issue by invalid issue iid")
-    public void delete_issue_by_invalid_issue_iid(Object testId) {
-        responseSpec = apiHelper.delete_issue(projectId, testId.toString());
+    @Test(dataProvider = "invalid_issueIid", dataProviderClass = CommonDataProvider.class, description = "[NEGATIVE] Should return 404 error code when user deletes issue by invalid issue iid")
+    public void delete_issue_by_invalid_issue_iid(Object testIssueIid) {
+        responseSpec = apiHelper.delete_issue(projectId, String.valueOf(testIssueIid));
         resMsg.validate_issue_not_found(responseSpec);
     }
 }

@@ -80,7 +80,7 @@ public class TestBase {
         String[] String_Array=new String[Object_Array.length];
 
         for (int i=0;i<String_Array.length;i++)
-            TestReportHelper.logInfo("Test parameters - " + Object_Array[i].toString());
+            TestReportHelper.logInfo("Test parameters - " + Object_Array[i]);
 
         if(responseSpec !=null) {
             TestReportHelper.logInfo("Response code --> " + responseSpec.getStatusCode() + " " + responseSpec.getStatusLine());

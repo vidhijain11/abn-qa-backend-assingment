@@ -4,10 +4,10 @@
 
     <test name="api tests">
         <classes>
-            <class name="com.abnamro.assignment.specs.apitests.GetIssues"/>
-            <class name="com.abnamro.assignment.specs.apitests.CreateIssue"/>
-            <class name="com.abnamro.assignment.specs.apitests.EditIssue"/>
-            <class name="com.abnamro.assignment.specs.apitests.DeleteIssue"/>
+            <class name="com.abnamro.assignment.specs.apitests.GetIssuesTest"/>
+            <class name="com.abnamro.assignment.specs.apitests.CreateIssueTest"/>
+            <class name="com.abnamro.assignment.specs.apitests.EditIssueTest"/>
+            <class name="com.abnamro.assignment.specs.apitests.DeleteIssueTest"/>
         </classes>
     </test>
 </suite>

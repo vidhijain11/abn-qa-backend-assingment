@@ -76,12 +76,25 @@ mvn clean test
 
 To run all the tests [This will by default run all specs in parallel mode]
 
-At the root level ‘TestReport.html’ file will be generated.
-Open the html file in any browser.
+5. At the root level ‘TestReport.html’ file will be generated. Open the html file in any browser.
 
-You can set the BASE_URI, ACCESS_TOKEN and PROJECT_ID in `src/test/resources/configfiles/config.properties` file.
-by default BASE_URI = https://gitlab.com/api/v4
+6. You can set the BASE_URI, ACCESS_TOKEN and PROJECT_ID in `src/test/resources/configfiles/config.properties` file. by default BASE_URI = https://gitlab.com/api/v4
 
 Note : 
    1) If environment variable is not provided it will fetch BASE_URI, ACCESS_TOKEN and PROJECT_ID from `config.properties` file.
    2) Only authenticated user has access to api's. It returns only issues created by the current user.
+
+7. Tests can be executed directly using testNG suite XML file - `src/test/resources/testsuites/gitIssuesAPITest.xml` 
+
+8. Reports -
+
+   <details>
+   <summary>TestNG and Extent report</summary>
+
+   ![img.png](doc/assignment/01_testNG_runner_logs.png)
+
+   ![img.png](doc/assignment/02_extent_report.png)
+
+   ![img.png](doc/assignment/03_report_dashboard.png)
+
+   </details>

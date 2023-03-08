@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class GetIssues extends TestBase {
+public class GetIssuesTest extends TestBase {
 
     IssueApiHelper apiHelper = new IssueApiHelper();
 

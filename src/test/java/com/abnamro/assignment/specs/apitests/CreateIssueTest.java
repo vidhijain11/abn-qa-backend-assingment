@@ -12,7 +12,7 @@ import org.json.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class CreateIssue extends TestBase {
+public class CreateIssueTest extends TestBase {
 
     IssueApiHelper apiHelper = new IssueApiHelper();
     ValidationHelper valdHelper = new ValidationHelper();

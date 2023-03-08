@@ -4,8 +4,6 @@ import com.abnamro.assignment.datafactory.CommonDataProvider;
 import com.abnamro.assignment.specs.TestBase;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
-import org.json.JSONArray;
-import org.json.JSONException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -91,20 +89,5 @@ public class HttpUtil {
                 .then().log().body()
                 .extract()
                 .response();
-    }
-
-    /**
-     * Convert JSON array to Object array
-     * @param ja
-     * @return
-     * @throws JSONException
-     */
-    public synchronized Object[] toObjectArray(JSONArray ja) throws JSONException {
-
-        Object[] obj = new Object[ja.length()];
-        for(int i=0; i< ja.length(); i++){
-            obj[i] = ja.get(i).toString();
-        }
-        return obj;
     }
 }
