@@ -1,19 +1,20 @@
 package com.abnamro.assignment.helper;
 
 import com.abnamro.assignment.constants.Endpoint;
-import com.abnamro.assignment.models.request.QueryParamModel;
+import com.abnamro.assignment.models.request.CreateIssueModel;
 import com.abnamro.assignment.utils.HttpUtil;
 import io.restassured.response.Response;
 import org.json.JSONObject;
 
 import java.util.List;
+import java.util.Map;
 
 public class IssueApiHelper {
 
     HttpUtil util = new HttpUtil();
 
     /** Create issue and get issue iid **/
-    public String create_issue_and_get_issueIId(String projectId, JSONObject reqPayloadCreateIssue) {
+    public String create_issue_and_get_issueIId(String projectId, CreateIssueModel reqPayloadCreateIssue) {
         Response response = create_issue(projectId, reqPayloadCreateIssue);
         response.then().statusCode(201);
 
@@ -34,9 +35,8 @@ public class IssueApiHelper {
     }
     /** Send edit issue request with default valid header. This function returns Response object **/
     public Response edit_issue(String requestPath) {
-        return util.putRequest(requestPath, HttpUtil.getValidHeader());
+        return util.putRequest(requestPath, HttpUtil.getValidHeader(), null);
     }
-
 
     /**
      * Delete all the issues present under a project
@@ -57,22 +57,10 @@ public class IssueApiHelper {
      * Edit/update issue - To update an issue send parameter name and value as query parameter.
      * @param projectId
      * @param issueIid
-     * @param listOfParams append all query parameters present in the list
+     * @param queryParams
      * @return
      */
-    public Response edit_issue(String projectId, String issueIid, QueryParamModel[] listOfParams) {
-
-        //Creating the filter String
-        StringBuilder queryParams = new StringBuilder();
-        for(QueryParamModel param : listOfParams){
-            queryParams.append(param.paramName).append("=").append(param.paramValue).append("&");
-        }
-        //delete last character &
-        queryParams.deleteCharAt(queryParams.length()-1);
-
-        String queryPath = "?"+queryParams;
-        System.out.println("Request Query Path: "+ queryPath);
-
-        return edit_issue(Endpoint.edit_issue(projectId, issueIid) + queryPath);
+    public Response edit_issue(String projectId, String issueIid, Map<String, String> queryParams) {
+        return  util.putRequest(Endpoint.edit_issue(projectId, issueIid), HttpUtil.getValidHeader(), queryParams);
     }
 }

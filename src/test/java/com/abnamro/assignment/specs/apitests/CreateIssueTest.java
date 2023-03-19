@@ -4,6 +4,7 @@ import com.abnamro.assignment.constants.Endpoint;
 import com.abnamro.assignment.datafactory.CreateIssueDataProvider;
 import com.abnamro.assignment.helper.IssueApiHelper;
 import com.abnamro.assignment.helper.ValidationHelper;
+import com.abnamro.assignment.models.request.BaseRequestModel;
 import com.abnamro.assignment.models.request.CreateIssueModel;
 import com.abnamro.assignment.models.response.IssueModel;
 import com.abnamro.assignment.specs.TestBase;
@@ -19,27 +20,28 @@ public class CreateIssueTest extends TestBase {
     HttpUtil util = new HttpUtil();
 
     @Test (dataProvider = "create_issue_test_data", dataProviderClass = CreateIssueDataProvider.class, description = "[POSITIVE] Should be able to create issue")
-    public void create_issue(CreateIssueModel testData) {
+    public void create_issue(BaseRequestModel requestModel) {
 
+        CreateIssueModel testData = requestModel.createIssueRequestPayload;
         //create issue
-         responseSpec = apiHelper.create_issue(projectId, testData.payload);
+         responseSpec = apiHelper.create_issue(projectId, testData);
         //validate issue is created
         responseSpec.then().assertThat().statusCode(201);
         IssueModel actualResponse = responseSpec.as(IssueModel.class);
 
         Assert.assertNotNull(actualResponse.id);
         Assert.assertNotNull(actualResponse.projectId);
-        Assert.assertEquals(actualResponse.title, testData.payload.getString("title"));
-        Assert.assertEquals(actualResponse.description, testData.payload.getString("description"));
+        Assert.assertEquals(actualResponse.title, testData.title);
+        Assert.assertEquals(actualResponse.description, testData.description);
         Assert.assertEquals(actualResponse.state, "opened");
         Assert.assertEquals(actualResponse.type, "ISSUE");
         Assert.assertEquals(actualResponse.issueType, "issue");
-        if(testData.payload.has("confidential"))
-            Assert.assertEquals(actualResponse.confidential, testData.payload.get("confidential"));
+        if(testData.confidential != null)
+            Assert.assertEquals(actualResponse.confidential, testData.confidential);
         else
             Assert.assertFalse(actualResponse.confidential);
-        if(testData.payload.has("labels"))
-            Assert.assertEquals(actualResponse.labels, testData.payload.getJSONArray(("labels")));
+        if(testData.labels != null)
+            Assert.assertEquals(actualResponse.labels, testData.labels);
         else
             Assert.assertTrue(actualResponse.labels.isEmpty());
     }
@@ -49,7 +51,7 @@ public class CreateIssueTest extends TestBase {
 
         JSONObject data = new JSONObject(testData.toString());
         //create issue with invalid data
-        responseSpec = apiHelper.create_issue(projectId, data.getJSONObject("request"));
+        responseSpec = apiHelper.create_issue(projectId, data.getJSONObject("request").toString());
         //validate error message
        valdHelper.validate_invalid_create_issue_request_error(responseSpec, data.getJSONObject("response"));
     }

@@ -10,7 +10,6 @@ import java.util.Map;
 
 public class HttpUtil {
 
-
     public static Map<String, String> getValidHeader() {
         Map<String, String> header = new HashMap<>();
         header.put("PRIVATE-TOKEN", TestBase.accessToken);
@@ -42,14 +41,17 @@ public class HttpUtil {
     }
 
     /**
-     * PUT request
+     * Put request
      * @param requestPath
-     * @return Response
+     * @param headers
+     * @param queryParams send an empty map to send request without query parameter
+     * @return
      */
-    public synchronized Response putRequest(String requestPath, Map<String, String> headers){
+    public synchronized Response putRequest(String requestPath, Map<String, String> headers, Map<String, String> queryParams){
 
         return RestAssured.given()
                 .headers(headers)
+                .queryParams(queryParams)
                 .when().log().all()
                 .put(requestPath)
                 .then().log().body()
@@ -67,7 +69,7 @@ public class HttpUtil {
 
         return RestAssured.given()
                 .headers(headers)
-                .body(val.toString())
+                .body(val)
                 .when().log().all()
                 .post(requestPath)
                 .then().log().body()

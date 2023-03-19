@@ -76,7 +76,8 @@ public class TestBase {
             TestReportHelper.logPass("TEST PASSED \n");
         }
 
-        TestReportHelper.logInfo("Class name --> " + iTestResult.getTestClass().getRealClass().getName() + ", Method name --> "+ iTestResult.getMethod().getMethodName());  //log class name, method name in report
+        TestReportHelper.logInfo("Class name --> " + iTestResult.getTestClass().getRealClass().getName());  //log class name, method name in report
+        TestReportHelper.logInfo("Method name --> "+ iTestResult.getMethod().getMethodName());
 
         //log test parameters in report
         Object[] Object_Array= iTestResult.getParameters();

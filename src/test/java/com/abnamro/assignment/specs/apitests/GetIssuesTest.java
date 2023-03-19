@@ -1,18 +1,16 @@
 package com.abnamro.assignment.specs.apitests;
 
-
 import com.abnamro.assignment.datafactory.CreateIssueDataProvider;
 import com.abnamro.assignment.helper.IssueApiHelper;
 import com.abnamro.assignment.constants.Endpoint;
+import com.abnamro.assignment.models.request.CreateIssueModel;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import com.abnamro.assignment.specs.TestBase;
 
 import java.io.InputStream;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class GetIssuesTest extends TestBase {
 
@@ -21,12 +19,12 @@ public class GetIssuesTest extends TestBase {
     @BeforeClass
     public void create_pre_req_data() {
 
-        Map<String,Object> reqParams = new HashMap<>();
-        reqParams.put("labels", List.of("bug"));
-        apiHelper.create_issue_and_get_issueIId(projectId, CreateIssueDataProvider.get_create_issue_payload(reqParams));
+        CreateIssueModel reqPayload = CreateIssueDataProvider.default_create_issue_payload();
+        reqPayload.setLabels(List.of("bug"));
+        apiHelper.create_issue_and_get_issueIId(projectId, reqPayload);
 
-        reqParams.put("labels", List.of("bug", "incident"));
-        apiHelper.create_issue_and_get_issueIId(projectId, CreateIssueDataProvider.get_create_issue_payload(reqParams));
+        reqPayload.setLabels(List.of("bug", "incident"));
+        apiHelper.create_issue_and_get_issueIId(projectId, reqPayload);
     }
 
     @Test (description = "[POSITIVE] Should list all the issues")

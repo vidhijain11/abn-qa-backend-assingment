@@ -1,10 +1,10 @@
 package com.abnamro.assignment.datafactory;
 
 import com.abnamro.assignment.models.request.BaseRequestModel;
-import com.abnamro.assignment.models.request.QueryParamModel;
 import org.testng.annotations.DataProvider;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
@@ -23,18 +23,16 @@ public class EditIssueDataProvider {
         //----------query parameter=title-------------
         BaseRequestModel editTitleType = new BaseRequestModel();
         editTitleType.testName = "Test_title_issueType";
-        editTitleType.params = new QueryParamModel[]{
-                new QueryParamModel(TITLE, "Updatedissuetitle")
-        };
+        editTitleType.params =  new HashMap<>();
+        editTitleType.params.put(TITLE, "Updatedissuetitle");
         listOfTestdata.add(editTitleType);
 
         //---------query parameter=issue_type and state event--------------
         BaseRequestModel editState = new BaseRequestModel();
         editState.testName = "Test_state_event";
-        editState.params = new QueryParamModel[]{
-                new QueryParamModel(ISSUE_TYPE, "incident"),
-                new QueryParamModel(STATE_EVENT, "close")
-        };
+        editState.params = new HashMap<>();
+        editState.params.put(ISSUE_TYPE, "incident");
+        editState.params.put(STATE_EVENT, "close");
         listOfTestdata.add(editState);
 
         //---------add more test data----------------
