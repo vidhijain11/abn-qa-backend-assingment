@@ -14,6 +14,14 @@ import java.util.Map;
 
 public class CreateIssueDataProvider {
 
+    /** returns json object to create issue with title **/
+    public static JSONObject default_create_issue_payload() {
+
+        JSONObject payload = new JSONObject();
+        payload.put("title", "Title field is mandatory to create issue");
+        return payload;
+    }
+
     /** Prepare test data to test the create issue request with a set of valid test data **/
     @DataProvider(name = "create_issue_test_data")
     public static Iterator<Object> data_provider() {
@@ -49,14 +57,6 @@ public class CreateIssueDataProvider {
     public Object[] create_issue_with_invalid_request_payload() throws JSONException {
         JSONArray data = DataFiles.get_api_test_data().getJSONArray("create_issue_invalid_request");
         return new CommonDataProvider().toObjectArray(data);
-    }
-
-    /** returns json object to create issue with title **/
-    public static JSONObject default_create_issue_payload() {
-
-      JSONObject payload = new JSONObject();
-      payload.put("title", "Title field is mandatory to create issue");
-      return payload;
     }
 
     /** returns json object to create issue with additional request parameters **/

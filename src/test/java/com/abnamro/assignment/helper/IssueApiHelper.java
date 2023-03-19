@@ -70,9 +70,9 @@ public class IssueApiHelper {
         //delete last character &
         queryParams.deleteCharAt(queryParams.length()-1);
 
-        String uri = "?"+queryParams;
-        System.out.println("Request URI: "+uri);
+        String queryPath = "?"+queryParams;
+        System.out.println("Request Query Path: "+ queryPath);
 
-        return edit_issue(Endpoint.edit_issue(projectId, issueIid) + uri);
+        return edit_issue(Endpoint.edit_issue(projectId, issueIid) + queryPath);
     }
 }

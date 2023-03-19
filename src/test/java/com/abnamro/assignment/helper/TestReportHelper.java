@@ -31,12 +31,12 @@ public class TestReportHelper {
 
     //To End the Testcase in Extent Report
     public static synchronized void endTest() {
-        extent.endTest((ExtentTest) extentTestMap.get((int) (Thread.currentThread().getId())));
+        extent.endTest(extentTestMap.get((int) (Thread.currentThread().getId())));
     }
 
     //To get the Testcase from Extent
     public static synchronized ExtentTest getTest() {
-        return (ExtentTest) extentTestMap.get((int)(Thread.currentThread().getId()));
+        return extentTestMap.get((int)(Thread.currentThread().getId()));
     }
 
     /**
@@ -44,7 +44,7 @@ public class TestReportHelper {
      * @param info
      */
     public static void logInfo(String info) {
-        TestReportHelper.getTest().log(LogStatus.INFO, info);
+        getTest().log(LogStatus.INFO, info);
     }
 
     /**
@@ -52,7 +52,7 @@ public class TestReportHelper {
      * @param info
      */
     public static void logPass(String info) {
-        TestReportHelper.getTest().log(LogStatus.PASS, info);
+        getTest().log(LogStatus.PASS, info);
     }
 
     /**
@@ -60,7 +60,7 @@ public class TestReportHelper {
      * @param error
      */
     public static void logError(String error) {
-        TestReportHelper.getTest().log(LogStatus.ERROR, error);
+        getTest().log(LogStatus.ERROR, error);
     }
 
     /**
@@ -68,6 +68,6 @@ public class TestReportHelper {
      * @param error
      */
     public static void logWarn(String error) {
-        TestReportHelper.getTest().log(LogStatus.WARNING, error);
+        getTest().log(LogStatus.WARNING, error);
     }
 }

@@ -2,6 +2,8 @@ package com.abnamro.assignment.specs;
 
 import com.abnamro.assignment.helper.IssueApiHelper;
 import com.abnamro.assignment.helper.ValidationHelper;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import com.abnamro.assignment.constants.DataFiles;
@@ -61,7 +63,7 @@ public class TestBase {
     }
 
     @AfterMethod
-    public void afterMethod(ITestResult iTestResult) {
+    public void afterMethod(ITestResult iTestResult) throws JsonProcessingException {
         //Checking the status of Test and saving it
         if (iTestResult.getStatus() == ITestResult.FAILURE) {
             TestReportHelper.getTest().log(LogStatus.FAIL, iTestResult.getMethod().getDescription());
@@ -75,12 +77,13 @@ public class TestBase {
         }
 
         TestReportHelper.logInfo("Class name --> " + iTestResult.getTestClass().getRealClass().getName() + ", Method name --> "+ iTestResult.getMethod().getMethodName());  //log class name, method name in report
+
         //log test parameters in report
         Object[] Object_Array= iTestResult.getParameters();
         String[] String_Array=new String[Object_Array.length];
 
         for (int i=0;i<String_Array.length;i++)
-            TestReportHelper.logInfo("Test parameters - " + Object_Array[i]);
+            TestReportHelper.logInfo("Test parameters - " +new ObjectMapper().writeValueAsString(Object_Array[i]));
 
         if(responseSpec !=null) {
             TestReportHelper.logInfo("Response code --> " + responseSpec.getStatusCode() + " " + responseSpec.getStatusLine());
